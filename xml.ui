@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1080</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Script Executor</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="main_layout">
+    <property name="spacing">
+     <number>10</number>
+    </property>
+    <property name="margin">
+     <number>10</number>
+    </property>
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <item>
+       <widget class="QTreeWidget" name="treeWidget">
+        <property name="headerLabel">
+         <string>Scripts</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="center_widget">
+        <layout class="QVBoxLayout" name="center_layout">
+         <item>
+          <widget class="QLabel" name="output_label">
+           <property name="text">
+            <string>Script Output:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="output_display">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="button_layout">
+           <item>
+            <widget class="QPushButton" name="execute_button">
+             <property name="text">
+              <string>Execute Script</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="exit_button">
+             <property name="text">
+              <string>Exit</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="right_widget">
+        <layout class="QVBoxLayout" name="right_layout">
+         <item>
+          <widget class="QLabel" name="status_label">
+           <property name="text">
+            <string>Script Status (Pass/Fail):</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListWidget" name="status_list"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
+
