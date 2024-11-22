@@ -1,0 +1,18 @@
+module my_service 1.0;
+
+require {
+    type my_service_t;
+    type system_resource_t;
+    class file { read write execute };
+    class dir { read write add_name };
+    class tcp_socket name_connect;
+}
+
+# Allow the service to read, write, and execute files in the system_resource_t domain
+allow my_service_t system_resource_t:file { read write execute };
+
+# Allow the service to read and write to directories in the system_resource_t domain
+allow my_service_t system_resource_t:dir { read write add_name };
+
+# Allow the service to establish TCP connections
+allow my_service_t system_resource_t:tcp_socket name_connect;
