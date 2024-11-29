@@ -77,7 +77,7 @@ class ScriptExecutorApp(QMainWindow, Ui_MainWindow):
             path = Path(item.data(0, Qt.UserRole))
             if path.is_dir():
                 scripts_to_execute.extend(self.get_scripts_in_folder(path))
-            elif path.is_file() and path.suffix in {".sh", ".py"}:
+            elif path.is_file() and path.suffix in {".sh", ".ps1"}:
                 scripts_to_execute.append(path)
 
         if not scripts_to_execute:
@@ -122,7 +122,7 @@ class ScriptExecutorApp(QMainWindow, Ui_MainWindow):
         """Return all scripts within a folder, recursively."""
         scripts = []
         for item in folder_path.rglob('*'):
-            if item.is_file() and item.suffix in {".sh", ".py"}:
+            if item.is_file() and item.suffix in {".sh", ".ps1"}:
                 scripts.append(item)
         return scripts
 
@@ -165,7 +165,7 @@ class ScriptWorker(QThread):
     def run(self):
         """Run the script and capture its output."""
         try:
-            command = ["bash", str(self.script_path)] if self.script_path.suffix == ".sh" else ["python3", str(self.script_path)]
+            command = ["bash", str(self.script_path)] if self.script_path.suffix == ".sh" else ["powershell -File", str(self.script_path)]
             result = subprocess.run(command, text=True, capture_output=True, check=True)
             self.result = (result.stdout, self.script_path)
         except subprocess.CalledProcessError as e:
